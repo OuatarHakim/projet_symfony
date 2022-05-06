@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+    <h1>{{ title }}</h1>
+    <p class="pull-right">
+        <a href="{{ pathRetour }}"><span class="glyphicon glyphicon-th-list"></span> Retour à la liste</a>
+    </p>
+
+    {{ form_start(form) }}
+    <h3 class="text-danger">{{ form_errors(form) }}</h3>
+    {% block form %}
+    {% endblock form %}
+    <div class="text-center">{{ form_row(form.save) }}</div>
+    {{ form_end(form) }}
+{% endblock %}

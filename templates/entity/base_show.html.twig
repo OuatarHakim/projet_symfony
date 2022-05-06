@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block body %}
+    <div>
+        <h1 class="text-center"> {{ title }} ✅</h1>
+
+    </div>
+    <div style="margin-right: 5%;margin-left: 5%;">
+        <table class="table table-success table-striped">
+            {% block tab %}
+
+            {% endblock %}
+        </table>
+    </div>
+    {% block previous %}
+
+    {% endblock %}
+{% endblock %}
+
+

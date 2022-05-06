@@ -1,0 +1,17 @@
+{% extends 'entity/base_form.html.twig' %}
+{% block form %}
+    <div class="container-fluid px-5">
+        <div class="row">
+            <div class ="col">{{ form_row(form.nom) }}</div>
+            <div class="col">{{ form_row(form.prenom) }}</div>
+        </div>
+        <div class="row" >
+            <div class="col">{{ form_row(form.age) }}</div>
+            <div class="col">{{ form_row(form.taille) }}</div>
+        </div>
+        <div class="row">
+            <div class ="col">{{ form_row(form.equipe) }}</div>
+            <div class="col">{{ form_row(form.poste) }}</div>
+        </div>
+    </div>
+{% endblock %}

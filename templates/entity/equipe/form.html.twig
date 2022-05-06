@@ -1,0 +1,12 @@
+{% extends 'entity/base_form.html.twig' %}
+{% block form %}
+    <div class="container-fluid">
+        <div class="col-6">{{ form_row(form.id_equipe) }}</div>
+        <div class="col-6">{{ form_row(form.nat_equipe) }}</div>
+        <div class="row mx-0">
+            <div class="col-6">{{ form_row(form.nbr_victoire) }}</div>
+            <div class="col-6">{{ form_row(form.nbr_defaite) }}</div>
+        </div>
+    </div>
+
+{% endblock %}

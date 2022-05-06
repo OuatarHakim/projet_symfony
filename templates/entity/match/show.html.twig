@@ -1,0 +1,24 @@
+{% extends 'entity/base_show.html.twig' %}
+
+{% block tab %}
+    <tr>
+        <th>Id équipe 1</th>
+        <th>Score équipe 1</th>
+        <th>Score équipe 2</th>
+        <th>Id équipe 2</th>
+        <th>Date</th>
+    </tr>
+    <tr>
+        <td>{{ match.equipe1.idequipe }}</td>
+        <td>{{ match.scoreequipe1 }} </td>
+        <td>{{ match.scoreequipe2 }}</td>
+        <td>{{ match.equipe2.idequipe }}</td>
+        <td>{{ match.date }}</td>
+    </tr>
+{% endblock %}
+
+{% block previous %}
+    <div class="text-center">
+        <a class="btn btn-primary ml-3 mb-3" href="{{ path(routeIndex) }}" role="button">Retour aux matchs</a>
+    </div>
+{% endblock %}

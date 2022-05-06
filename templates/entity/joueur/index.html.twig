@@ -1,0 +1,38 @@
+{% extends 'entity/base_index.html.twig' %}
+
+
+{% block tabEntity %}
+    <thead>
+        <tr>
+            <td>Nom</td>
+            <td>Prénom</td>
+            <td>Age</td>
+            <td>Taille</td>
+            <td>Poste</td>
+            <td>Nationalité</td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for j in joueurs %}
+        <tr>
+            <td>{{ j.nom }}</td>
+            <td>{{ j.prenom }} </td>
+            <td>{{ j.age }}</td>
+            <td>{{ j.taille }}</td>
+            <td>{{ j.poste.nom}}</td>
+            <td>{{j.equipe.natEquipe}}</td>
+            <td>
+                <a class="btn btn-primary" href="{{ path(routes['update'],{id :j.idjoueur}) }}" role="button">Modifier</a>
+                <a class="btn btn-primary" href="{{path(routes['delete'],{id:j.idjoueur}) }}" role="button">Supprimer</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+{% endblock %}
+
+{% block actionEntity %}
+    <div class="text-center">
+        <span class="text-center">Nombre de joueurs : {{ sum }}</span>
+        <a class="btn btn-primary ml-3 mb-3" href="{{ path(routes['insert']) }}" role="button">Créer un joueur</a>
+    </div>
+{% endblock %}

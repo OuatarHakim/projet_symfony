@@ -1,0 +1,14 @@
+{% extends 'entity/base_form.html.twig' %}
+{% block form %}
+    <div class="container-fluid">
+        <div class="col">{{ form_row(form.date) }}</div>
+        <div class="row mx-0">
+            <div class="col-xl-6 col-12">{{ form_row(form.equipe1) }}</div>
+            <div class="col-xl-6 col-12">{{ form_row(form.score_equipe1) }}</div>
+        </div>
+        <div class="row mx-0">
+            <div class="col-xl-6 col-12">{{ form_row(form.equipe2) }}</div>
+            <div class="col-xl-6 col-12">{{ form_row(form.score_equipe2) }}</div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+
+
+    <div>
+        <h1 class="text-center">{{ title }}</h1>
+
+    </div>
+    <div class="mx-3">
+        <table class="table table-success table-striped table-hover table-bordered">
+            {% block tabEntity %}
+
+            {% endblock %}
+        </table>
+        {% block actionEntity %}
+
+
+        {% endblock %}
+
+        {% block pagination %}
+            <nav aria-label="Entity navigation">
+                <ul class="pagination justify-content-center">
+                    <li class="{{ (currentPage==1)? 'page-item disabled' : "page-item" }}">
+                        <a class="page-link" href="{{ path(routes['index'], {numPage:currentPage-1}) }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Précédent</span>
+                        </a>
+                    </li>
+
+
+                    {% set totalPage = ((sum/limit)|round(0, 'ceil')) %}
+                    {% if totalPage <= 4 %}
+                        {% for item in 1..totalPage %}
+                            <li class="{{ (currentPage == item)? 'page-item active':"page-item" }}"><a class="page-link"
+                                                                                                       href="{{ path( routes['index'], {numPage:item}) }}">{{ item }}</a>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li class="{{ (currentPage==1)? 'page-item active':"page-item" }}"><a class="page-link"
+                                                                                              href="{{ path( routes['index'] ) }}">1</a>
+                        </li>
+                        <!-- Notre page de début est la pageCourante - 1 sauf si la page est à 1 ou 2 -->
+                        {% set pageStart = ((currentPage==1 or currentPage==2))?2:currentPage-1 %}
+                        <!-- On vérifie que notre page de début est toujours inférieur au nombre de page - 3 sinon on affiche totalPage-3 -->
+                        {% set pageStart = ((pageStart - totalPage) > -3)?totalPage-3:pageStart %}
+                        {% set pageEnd = (pageStart+2 >= totalPage)?totalPage-1:pageStart+2 %}
+
+                        {% if pageStart >= totalPage/2 %}
+                            <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                        {% endif %}
+
+                        {% for item in pageStart..pageEnd %}
+                            <li class="{{ (currentPage == item)? 'page-item active':"page-item" }}"><a class="page-link"
+                                                                                                href="{{ path( routes['index'], {numPage:item}) }}">{{ item }}</a>
+                            </li>
+                        {% endfor %}
+
+                        {% if pageStart < totalPage/2 %}
+                            <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                        {% endif %}
+                        <li class="{{ (currentPage==totalPage)? 'page-item active':"page-item" }}"><a class="page-link"
+                                                                                                      href="{{ path( routes['index'], {numPage:totalPage}) }}">{{ totalPage }}</a>
+                        </li>
+                    {% endif %}
+                    <li class="{{ (currentPage==totalPage)? 'page-item disabled' : "page-item" }}">
+                        <a class="page-link" href="{{ path(routes['index'], {numPage:currentPage+1}) }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Suivant</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        {% endblock %}
+    </div>
+
+
+
+
+
+{% endblock %}

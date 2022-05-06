@@ -1,0 +1,30 @@
+{% extends 'entity/base_show.html.twig' %}
+
+{% block tab %}
+    <thead>
+    <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Age</th>
+        <th>Taille</th>
+        <th>Poste</th>
+        <th>Nationalité</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{ joueur.nom }}</td>
+        <td>{{ joueur.prenom }} </td>
+        <td>{{ joueur.age }}</td>
+        <td>{{ joueur.taille }}</td>
+        <td>{{ joueur.poste.nom}}</td>
+        <td>{{ joueur.equipe.natEquipe }}</td>
+    </tr>
+    </tbody>
+{% endblock %}
+
+{% block previous %}
+    <div class="text-center">
+        <a class="btn btn-primary ml-3 mb-3" href="{{ path(routeIndex) }}" role="button">Retour aux joueurs</a>
+    </div>
+{% endblock %}
